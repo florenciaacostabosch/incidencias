@@ -19,6 +19,15 @@ function crearCelda(texto) {
     return td;
 }
 
+function crearCeldaEtiqueta(tipo, valor) {
+    const td = document.createElement('td');
+    const span = document.createElement('span');
+    span.className = `badge ${tipo}-${valor.toLowerCase()}`;
+    span.textContent = valor.replace('_', ' ');
+    td.appendChild(span);
+    return td;
+}
+
 function pintarIncidencias(incidencias) {
     tabla.replaceChildren();
 
@@ -35,8 +44,8 @@ function pintarIncidencias(incidencias) {
         const fila = document.createElement('tr');
         fila.appendChild(crearCelda(i.id));
         fila.appendChild(crearCelda(i.titulo));
-        fila.appendChild(crearCelda(i.prioridad));
-        fila.appendChild(crearCelda(i.estado));
+        fila.appendChild(crearCeldaEtiqueta('prioridad', i.prioridad));
+        fila.appendChild(crearCeldaEtiqueta('estado', i.estado));
         fila.appendChild(crearCelda(i.usuarioNombre ?? 'Sin asignar'));
         fila.appendChild(crearCelda(new Date(i.fechaCreacion).toLocaleString('es-ES')));
         tabla.appendChild(fila);

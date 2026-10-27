@@ -1,43 +1,105 @@
+:root {
+    --fondo: #f1f3f7;
+    --tarjeta: #ffffff;
+    --texto: #1f2937;
+    --texto-suave: #6b7280;
+    --borde: #e5e7eb;
+    --acento: #2563eb;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: system-ui, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     margin: 0;
-    background: #f5f6f8;
-    color: #222;
+    background: var(--fondo);
+    color: var(--texto);
 }
 
 main {
-    max-width: 900px;
-    margin: 2rem auto;
+    max-width: 960px;
+    margin: 2.5rem auto;
     padding: 0 1rem;
 }
 
+h1 {
+    margin: 0 0 1.25rem;
+    font-size: 1.6rem;
+}
+
 .filtros {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     margin-bottom: 1rem;
+    color: var(--texto-suave);
 }
 
 select {
-    padding: 0.3rem 0.5rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background: var(--tarjeta);
+    font: inherit;
+    color: var(--texto);
+}
+
+select:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 1px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
+    background: var(--tarjeta);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 th, td {
-    padding: 0.6rem 0.8rem;
+    padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--borde);
 }
 
 th {
-    background: #e9ecef;
+    background: #f9fafb;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--texto-suave);
 }
 
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #f9fafb; }
+
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.prioridad-alta   { background: #fee2e2; color: #991b1b; }
+.prioridad-media  { background: #fef3c7; color: #92400e; }
+.prioridad-baja   { background: #dcfce7; color: #166534; }
+
+.estado-abierta   { background: #dbeafe; color: #1e40af; }
+.estado-en_curso  { background: #ede9fe; color: #5b21b6; }
+.estado-cerrada   { background: #e5e7eb; color: #374151; }
+
 #mensaje {
-    padding: 0.6rem 0.8rem;
-    background: #fdecea;
-    color: #8a1c1c;
-    border: 1px solid #f5c2c0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+    table { display: block; overflow-x: auto; }
 }
